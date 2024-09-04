@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import '../styles/index.css';
+import '../styles/sections.css';
 import SectionButton from './SectionButton';
-import PersonalInfoForm from './PersonalInfoForm';
+import AddEducationButton from './AddEducationButton';
 
-export default function PersonalSection() {
+export default function EducationSection() {
   const [isActive, setIsActive] = useState(false);
 
   function toggleSection() {
@@ -11,12 +12,12 @@ export default function PersonalSection() {
   }
 
   return (
-    <div className='section personal-section'>
+    <div className='section education-section'>
       <SectionButton
-        buttonText={'Personal Information'}
+        buttonText={'Education'}
         handleClick={toggleSection}
       />
-      <PersonalInfoForm isVisible={isActive}/>
+      <AddEducationButton isVisible={isActive}/>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import InputComponent from './InputComponent';
 
 export default function PersonalInfoForm({isVisible}) {
   return isVisible ? (
-    <form hidden={isVisible} >
+    <form>
       <InputComponent
         type={'text'}
         name={'fullname'}
