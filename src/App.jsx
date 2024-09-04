@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import './styles/App.css';
-import './components/ContentStyleToggle.jsx';
 import ContentStyleToggle from './components/ContentStyleToggle.jsx';
 import CVButtons from './components/CVButtons.jsx';
+import PersonalInfoForm from './components/PersonalInfoForm.jsx';
 
 function App() {
   return (
@@ -11,6 +10,7 @@ function App() {
       <hr />
       <CVButtons />
       <hr />
+      <PersonalInfoForm />
     </>
   );
 }
