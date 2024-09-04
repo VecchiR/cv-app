@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/index.css';
+import '../../styles/index.css';
 import EducationForm from './EducationForm.jsx';
 
 export default function AddEducationButton({ isVisible }) {

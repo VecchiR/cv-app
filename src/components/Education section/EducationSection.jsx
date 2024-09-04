@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import '../styles/index.css';
-import '../styles/sections.css';
-import SectionButton from './SectionButton';
+import '../../styles/index.css';
+import '../../styles/sections.css';
+import SectionButton from '../SectionButton';
 import AddEducationButton from './AddEducationButton';
 
 export default function EducationSection() {

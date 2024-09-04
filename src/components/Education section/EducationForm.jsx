@@ -1,6 +1,6 @@
-import '../styles/index.css';
-import FormButtons from './FormButtons';
-import InputComponent from './InputComponent';
+import '../../styles/index.css';
+import FormButtons from '../FormButtons';
+import InputComponent from '../InputComponent';
 
 export default function EducationForm({ isVisible }) {
   return isVisible ? (

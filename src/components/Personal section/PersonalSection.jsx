@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../styles/index.css';
-import SectionButton from './SectionButton';
+import '../../styles/index.css';
+import SectionButton from '../SectionButton';
 import PersonalInfoForm from './PersonalInfoForm';
 
 export default function PersonalSection() {

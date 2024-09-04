@@ -1,5 +1,5 @@
-import '../styles/index.css';
-import InputComponent from './InputComponent';
+import '../../styles/index.css';
+import InputComponent from '../InputComponent';
 
 export default function PersonalInfoForm({isVisible}) {
   return isVisible ? (
