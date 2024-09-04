@@ -16,7 +16,12 @@ export default function PersonalInfoForm() {
         placeholder={'Enter your e-mail address'}
         labelText={'E-mail'}
       />
-
+      <InputComponent
+        type={'text'}
+        name={'linkedin'}
+        placeholder={'linkedin.com/in/rafaelvecchisilva'}
+        labelText={'LinkedIn profile'}
+      />
       <InputComponent
         type={'tel'}
         placeholder={'Enter your phone number'}
