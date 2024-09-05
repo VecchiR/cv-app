@@ -4,13 +4,12 @@ import './styles/sections.css';
 import PersonalSection from './components/Personal section/PersonalSection.jsx';
 import EducationSection from './components/Education section/EducationSection.jsx';
 import ExperienceSection from './components/Experience section/ExperienceSection.jsx';
+import Editor from './components/Editor.jsx';
 
 function App() {
   return (
     <>
-      {/* <PersonalSection /> */}
-      {/* <EducationSection /> */}
-      <ExperienceSection />
+      <Editor />
     </>
   );
 }
