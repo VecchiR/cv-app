@@ -1,8 +1,8 @@
 import '../../styles/index.css';
 import InputComponent from '../InputComponent';
 
-export default function PersonalInfoForm({isVisible}) {
-  return isVisible ? (
+export default function PersonalInfoForm() {
+  return (
     <form>
       <InputComponent
         type={'text'}
@@ -34,5 +34,5 @@ export default function PersonalInfoForm({isVisible}) {
         labelText={'Location'}
       />
     </form>
-  ) : null;
+  );
 }

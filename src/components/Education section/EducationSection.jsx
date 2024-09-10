@@ -4,20 +4,11 @@ import '../../styles/sections.css';
 import SectionButton from '../SectionButton';
 import AddEducationButton from './AddEducationButton';
 
-export default function EducationSection() {
-  const [isActive, setIsActive] = useState(false);
-
-  function toggleSection() {
-    setIsActive(!isActive);
-  }
-
+export default function EducationSection({ active, onClick }) {
   return (
-    <div className='section education-section'>
-      <SectionButton
-        buttonText={'Education'}
-        handleClick={toggleSection}
-      />
-      <AddEducationButton isVisible={isActive}/>
+    <div className="section education-section">
+      <SectionButton buttonText={'Education'} onClick={onClick} />
+      {active && <AddEducationButton isVisible={active} />}
     </div>
   );
 }
