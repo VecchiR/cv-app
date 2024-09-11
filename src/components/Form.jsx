@@ -1,39 +1,21 @@
-// import formFields from "./formFields";
-
+import formFields from '../formFields';
 import InputComponent from './InputComponent';
 
-export default function Form() {
+export default function Form({ sectionName }) {
+  const fields = formFields[sectionName];
+
   return (
     <form>
-      <InputComponent
-        type={'text'}
-        name={'fullname'}
-        placeholder={'Enter first and last name'}
-        labelText={'Full name'}
-      />
-      <InputComponent
-        type={'email'}
-        placeholder={'Enter your e-mail address'}
-        labelText={'E-mail'}
-      />
-      <InputComponent
-        type={'text'}
-        name={'linkedin'}
-        placeholder={'linkedin.com/in/rafaelvecchisilva'}
-        labelText={'LinkedIn profile'}
-      />
-      <InputComponent
-        type={'tel'}
-        placeholder={'Enter your phone number'}
-        labelText={'Phone number'}
-      />
-
-      <InputComponent
-        type={'text'}
-        name={'location'}
-        placeholder={'City, Country'}
-        labelText={'Location'}
-      />
+      {fields.map((field, index) => (
+        <InputComponent
+          key={index}
+          type={field.type}
+          name={field.name || field.type} // Fallback to 'type' if name is not provided
+          placeholder={field.placeholder}
+          labelText={field.labelText}
+        />
+      ))}
+      <button type="submit">Submit</button>
     </form>
   );
 }

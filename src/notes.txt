@@ -47,31 +47,41 @@ app
 
 SECTIONS
 
-diferença: alguns tem ENTRY CARDS (+ add entry btn)
+OK - diferença: alguns tem ENTRY CARDS (+ add entry btn)
     entao tem que ter uma prop pra diferenciar
 
 o que o componente SECTION precisa pra renderizar entao??
-    Nome da seção  
+    OK - Nome da seção  
         p/ 'buttonText' e o 'className' -> passa do editor pra seção
-    handle toggle/collapse
+    OK - handle toggle/collapse
         função que toggle ao clicar no header -> vive no editor
         estado pra saber se essa seção está ativa -> vive no editor
+    
     Saber se a seção tem 'entry cards'
         para renderizar condicional:
-            add entry button
-            entry cards
+            OK - add entry button
+            entry cards <------------------------------------------ FALTA UMA FUNÇÃO PRA ISSO
 
 
-    personal section
-        section button / header
-        form    
-    education section
-        section button / header
-        entry cards
-        add entry
-        form    
-    experience section
-        section button / header
-        entry cards            
-        add entry
-        form
+-> Ok, agora renderiza as seções, dá pra TOGGLE entre elas, mostra o form no personal e ADD ENTRY no education e experience
+AGORA: 
+falta clicar no ADD ENTRY e MOSTRAR O FORM
+    AO MOSTRAR O FORM, NÃOOOOOOOOOO mostrar os cards (usar o isEditing state)
+pra isso: tem que conseguir a funcionalidade do form (FORM GENERICO -> puxa inputs do formFields.js)
+
+
+
+
+personal section
+    section button / header
+    form    
+education section
+    section button / header
+    entry cards
+    add entry
+    form    
+experience section
+    section button / header
+    entry cards            
+    add entry
+    form
