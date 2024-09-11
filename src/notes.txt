@@ -63,11 +63,12 @@ o que o componente SECTION precisa pra renderizar entao??
             entry cards <------------------------------------------ FALTA UMA FUNÇÃO PRA ISSO
 
 
--> Ok, agora renderiza as seções, dá pra TOGGLE entre elas, mostra o form no personal e ADD ENTRY no education e experience
-AGORA: 
-falta clicar no ADD ENTRY e MOSTRAR O FORM
-    AO MOSTRAR O FORM, NÃOOOOOOOOOO mostrar os cards (usar o isEditing state)
-pra isso: tem que conseguir a funcionalidade do form (FORM GENERICO -> puxa inputs do formFields.js)
+OK - funcionalidade do form (FORM GENERICO -> puxa inputs do formFields.js)
+OK - falta clicar no ADD ENTRY e MOSTRAR O FORM
+
+Submit form -> salvar e criar cards
+Render entry cards    
+AO MOSTRAR O FORM, NÃOOOOOOOOOO mostrar os cards (usar o isEditing state)
 
 
 

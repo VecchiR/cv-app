@@ -1,11 +1,11 @@
 import formFields from '../formFields';
 import InputComponent from './InputComponent';
 
-export default function Form({ sectionName }) {
+export default function Form({ sectionName, hasSubmitButton, handleSubmit, handleCancel }) {
   const fields = formFields[sectionName];
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {fields.map((field, index) => (
         <InputComponent
           key={index}
@@ -15,7 +15,12 @@ export default function Form({ sectionName }) {
           labelText={field.labelText}
         />
       ))}
-      <button type="submit">Submit</button>
+      {hasSubmitButton && (
+        <>
+          <button type="submit">Submit</button> 
+          <button type="button" onClick={handleCancel}>Cancel</button>
+        </>
+      )}
     </form>
   );
 }
