@@ -1,0 +1,77 @@
+Como está a hierarquia agora:
+APP
+    EDITOR
+        PERSONAL SECTION
+            SECTION BUTTON
+                PERSONAL INFO FORM
+                    INPUT COMPONENTS
+        EDUCATION SECTION 
+            SECTION BUTTON
+                ADD EDUCATION BUTTON
+                    EDUCATION FORM
+                        INPUT COMPONENTS    
+                        FORM BUTTONS
+        EXPERIENCE SECTION 
+            SECTION BUTTON
+                ADD EXPERIENCE BUTTON
+                    EXPERIENCE FORM
+                        INPUT COMPONENTS
+                        FORM BUTTONS
+
+
+Como deveria ser:
+app
+    editor
+        personal section
+            section button / header
+            form    
+                input components
+        education section
+            section button / header
+            entry cards
+            add entry
+            form    
+                input components
+                form buttons
+        experience section
+            section button / header
+            entry cards            
+            add entry
+            form    
+                input components
+                form buttons
+    result
+        // componentes que montam o currículo pronto na direita
+
+
+
+SECTIONS
+
+diferença: alguns tem ENTRY CARDS (+ add entry btn)
+    entao tem que ter uma prop pra diferenciar
+
+o que o componente SECTION precisa pra renderizar entao??
+    Nome da seção  
+        p/ 'buttonText' e o 'className' -> passa do editor pra seção
+    handle toggle/collapse
+        função que toggle ao clicar no header -> vive no editor
+        estado pra saber se essa seção está ativa -> vive no editor
+    Saber se a seção tem 'entry cards'
+        para renderizar condicional:
+            add entry button
+            entry cards
+
+
+    personal section
+        section button / header
+        form    
+    education section
+        section button / header
+        entry cards
+        add entry
+        form    
+    experience section
+        section button / header
+        entry cards            
+        add entry
+        form
