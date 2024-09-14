@@ -30,7 +30,7 @@ export default function Section({
 
   const handleSubmitForm = (e) => {
    e.preventDefault();
-   const formData = [];
+   const formData = {};
    for (let i =0; i < e.target.length - 2; i++) {
     // const pair = [];
     //  pair.push(e.target[i].labels[0].textContent);
@@ -38,10 +38,17 @@ export default function Section({
     //  formData.push(pair);
 
       
-        formData[e.target[i].name] = e.target[i].value;
-        formData.label =  e.target[i].labels[0].textContent;  // tentando sair do modo array pro modo objeto
+        // formData[e.target[i].name] = e.target[i].value;
+        // formData.label =  e.target[i].labels[0].textContent;  // tentando sair do modo array pro modo objeto
+        formData[ e.target[i].labels[0].textContent] = e.target[i].value;
    }
+   
+  //  LOGS FOR DEBUGGING:
    console.log(formData);
+   console.log(entries);
+   console.log([...entries, formData]);
+
+
     setEntries([...entries, formData]);
     setIsEditing(false);
   };
