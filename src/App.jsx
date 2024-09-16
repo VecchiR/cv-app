@@ -6,11 +6,13 @@ import EducationSection from './components/Education section/EducationSection.js
 import ExperienceSection from './components/Experience section/ExperienceSection.jsx';
 import Editor from './components/Editor.jsx';
 import Section from './components/Section.jsx';
+import CVButtons from './components/CVButtons.jsx';
 
 function App() {
   return (
     <>
-      <Editor/>
+      <CVButtons />
+      <Editor />
     </>
   );
 }

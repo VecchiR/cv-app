@@ -13,6 +13,7 @@ export default function Section({
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [entries, setEntries] = useState([]);
+  const [entryIdCounter, setEntryIdCounter] = useState(1);
 
   const handleAddNewEntry = () => {
     setIsEditing(true);
@@ -22,34 +23,31 @@ export default function Section({
     console.log(e);
     console.log('currentTarget: ', e.currentTarget); // get the div.entry-card
     setIsEditing(true);
-  }
+  };
+
+  const generateEntryId = () => {
+    return entries.length + 1;
+  };
 
   const handleCancel = () => {
     setIsEditing(false);
-  }
+  };
 
   const handleSubmitForm = (e) => {
-   e.preventDefault();
-   const formData = {};
-   for (let i =0; i < e.target.length - 2; i++) {
-    // const pair = [];
-    //  pair.push(e.target[i].labels[0].textContent);
-    //  pair.push(e.target[i].value);
-    //  formData.push(pair);
+    e.preventDefault();
+    const formData = {};
+    for (let i = 0; i < e.target.length - 2; i++) {
+      formData[e.target[i].labels[0].textContent] = e.target[i].value;
+    }
+    formData['id'] = entryIdCounter;
 
-      
-        // formData[e.target[i].name] = e.target[i].value;
-        // formData.label =  e.target[i].labels[0].textContent;  // tentando sair do modo array pro modo objeto
-        formData[ e.target[i].labels[0].textContent] = e.target[i].value;
-   }
-   
-  //  LOGS FOR DEBUGGING:
-   console.log(formData);
-   console.log(entries);
-   console.log([...entries, formData]);
-
+    console.log('LOGS FOR DEBUGGING:')
+    console.log('formData: ', formData);
+    console.log('entries: ', entries);
+    console.log('[...entries, formData]: ',[...entries, formData]);
 
     setEntries([...entries, formData]);
+    setEntryIdCounter(entryIdCounter + 1);
     setIsEditing(false);
   };
 
@@ -76,7 +74,7 @@ export default function Section({
       {isActive && hasEntryCards && !isEditing && (
         <>
           {entries.map((entry, index) => (
-            <EntryCard key={index} entry={entry} handleClick={handleEditEntry} />
+            <EntryCard key={entry.id} entry={entry} handleClick={handleEditEntry} />
           ))}
           <AddEntryButton handleClick={handleAddNewEntry} />
         </>
