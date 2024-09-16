@@ -1,8 +1,8 @@
 import '../styles/index.css';
 
-export default function EntryCard({ entry, handleClick }) {
+export default function EntryCard({ entry, handleClick, handleDelete, entryid }) {
   return (
-    <div className="entry-card" onClick={handleClick}>
+    <div className="entry-card" entryid={entryid} onClick={handleClick}>
       {Object.entries(entry)
         .filter(([key]) => key !== 'id') // Filter out the 'id' field
         .map((pair, index) => (
@@ -12,7 +12,7 @@ export default function EntryCard({ entry, handleClick }) {
         ))}
 
       <div className="entry-card-actions">
-        <button>Delete</button>
+        <button className={'delete-button'} onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );

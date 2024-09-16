@@ -20,13 +20,25 @@ export default function Section({
   };
 
   const handleEditEntry = (e) => {
-    console.log(e);
-    console.log('currentTarget: ', e.currentTarget); // get the div.entry-card
+    if((!e.target.matches('button')))
     setIsEditing(true);
   };
 
-  const generateEntryId = () => {
-    return entries.length + 1;
+  const handleDeleteEntry = (e) => {
+    if (e.target.className === 'delete-button') {
+
+      console.log(entries.filter((x) => x.id === e.target.parentElement.parentElement.getAttribute('entryid'))[0])
+      
+      const entryId = e.target.parentElement.parentElement.getAttribute('entryid');
+      const matchingEntryIndex = entries.findIndex(entry => entry.id === entryId);
+    
+      if (matchingEntryIndex !== -1) {
+        setEntries(entries.slice(0, matchingEntryIndex).concat(entries.slice(matchingEntryIndex + 1)));
+      } else {
+        console.warn("No entry found with matching ID:", entryId);
+      }
+      
+    }
   };
 
   const handleCancel = () => {
@@ -39,12 +51,12 @@ export default function Section({
     for (let i = 0; i < e.target.length - 2; i++) {
       formData[e.target[i].labels[0].textContent] = e.target[i].value;
     }
-    formData['id'] = entryIdCounter;
+    formData['id'] = entryIdCounter.toString();
 
-    console.log('LOGS FOR DEBUGGING:')
+    console.log('LOGS FOR DEBUGGING:');
     console.log('formData: ', formData);
     console.log('entries: ', entries);
-    console.log('[...entries, formData]: ',[...entries, formData]);
+    console.log('[...entries, formData]: ', [...entries, formData]);
 
     setEntries([...entries, formData]);
     setEntryIdCounter(entryIdCounter + 1);
@@ -74,7 +86,13 @@ export default function Section({
       {isActive && hasEntryCards && !isEditing && (
         <>
           {entries.map((entry, index) => (
-            <EntryCard key={entry.id} entry={entry} handleClick={handleEditEntry} />
+            <EntryCard
+              key={entry.id}
+              entry={entry}
+              handleClick={handleEditEntry}
+              handleDelete={handleDeleteEntry}
+              entryid={entry.id}
+            />
           ))}
           <AddEntryButton handleClick={handleAddNewEntry} />
         </>
