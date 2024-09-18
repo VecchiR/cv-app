@@ -14,35 +14,57 @@ export default function Section({
   const [isEditing, setIsEditing] = useState(false);
   const [entries, setEntries] = useState([]);
   const [entryIdCounter, setEntryIdCounter] = useState(1);
+  const [entryToEdit, setEntryToEdit] = useState(null);
 
   const handleAddNewEntry = () => {
     setIsEditing(true);
   };
 
   const handleEditEntry = (e) => {
-    if((!e.target.matches('button')))
-    setIsEditing(true);
+    if (!e.target.matches('button')) {
+      console.log(
+        entries.filter(
+          (x) => x.id === e.target.parentElement.parentElement.getAttribute('entryid')
+        )[0]
+      );
+
+      const entryId = e.currentTarget.getAttribute('entryid');
+      const matchingEntryIndex = entries.findIndex((entry) => entry.id === entryId);
+
+      if (matchingEntryIndex !== -1) {
+        setEntryToEdit(entries[matchingEntryIndex]);
+      } else {
+        console.warn('No entry found with matching ID:', entryId);
+      }
+
+      setIsEditing(true);
+    }
   };
 
   const handleDeleteEntry = (e) => {
     if (e.target.className === 'delete-button') {
+      console.log(
+        entries.filter(
+          (x) => x.id === e.target.parentElement.parentElement.getAttribute('entryid')
+        )[0]
+      );
 
-      console.log(entries.filter((x) => x.id === e.target.parentElement.parentElement.getAttribute('entryid'))[0])
-      
       const entryId = e.target.parentElement.parentElement.getAttribute('entryid');
-      const matchingEntryIndex = entries.findIndex(entry => entry.id === entryId);
-    
+      const matchingEntryIndex = entries.findIndex((entry) => entry.id === entryId);
+
       if (matchingEntryIndex !== -1) {
-        setEntries(entries.slice(0, matchingEntryIndex).concat(entries.slice(matchingEntryIndex + 1)));
+        setEntries(
+          entries.slice(0, matchingEntryIndex).concat(entries.slice(matchingEntryIndex + 1))
+        );
       } else {
-        console.warn("No entry found with matching ID:", entryId);
+        console.warn('No entry found with matching ID:', entryId);
       }
-      
     }
   };
 
   const handleCancel = () => {
     setIsEditing(false);
+    setEntryToEdit(null);
   };
 
   const handleSubmitForm = (e) => {
@@ -60,6 +82,7 @@ export default function Section({
 
     setEntries([...entries, formData]);
     setEntryIdCounter(entryIdCounter + 1);
+    setEntryToEdit(null);
     setIsEditing(false);
   };
 
@@ -79,6 +102,7 @@ export default function Section({
           hasSubmitButton={hasEntryCards}
           handleSubmit={handleSubmitForm}
           handleCancel={handleCancel}
+          entryToEdit={entryToEdit}
         />
       )}
 
