@@ -3,6 +3,7 @@ import SectionHeaderButton from './SectionHeaderButton';
 import Form from './Form';
 import AddEntryButton from './AddEntryButton';
 import EntryCard from './EntryCard';
+import { isElementOfType } from 'react-dom/test-utils';
 
 export default function Section({
   sectionName,
@@ -12,9 +13,26 @@ export default function Section({
   handleHeaderClick,
 }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState(
+    hasEntryCards
+      ? []
+      : {
+          fullname: '',
+          email: '',
+          linkedin: '',
+          tel: '',
+          location: '',
+        }
+  );
   const [entryIdCounter, setEntryIdCounter] = useState(1);
   const [entryToEdit, setEntryToEdit] = useState(null);
+
+  const handleSoloEntryFormChange = (e) => {
+    const updated = entries;
+    updated[`${e.target.id}`] = e.target.value;
+    setEntries(updated);
+  }
+
 
   const handleAddNewEntry = () => {
     setIsEditing(true);
@@ -76,7 +94,7 @@ export default function Section({
 
     if (entryToEdit !== null) {
       formData['id'] = entryToEdit.id;
-      const existingEntryIndex = entries.findIndex(entry => entry.id === entryToEdit.id);
+      const existingEntryIndex = entries.findIndex((entry) => entry.id === entryToEdit.id);
       const editedEntries = entries;
       editedEntries[existingEntryIndex] = formData;
       setEntries(editedEntries);
@@ -92,10 +110,9 @@ export default function Section({
     // console.log('formData: ', formData);
     // console.log('entries: ', entries);
     // console.log('[...entries, formData]: ', [...entries, formData]);
-    
+
     setEntryToEdit(null);
     setIsEditing(false);
-
   };
 
   return (
@@ -114,7 +131,8 @@ export default function Section({
           hasSubmitButton={hasEntryCards}
           handleSubmit={handleSubmitForm}
           handleCancel={handleCancel}
-          entryToEdit={entryToEdit}
+          entryToEdit={hasEntryCards ? entryToEdit : entries}
+          onChange={hasEntryCards ? null : handleSoloEntryFormChange}
         />
       )}
 

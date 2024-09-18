@@ -1,9 +1,9 @@
 const personal = [
-  { type: 'text', name: 'fullname', placeholder: 'Enter first and last name', labelText: 'Full name' },
-  { type: 'email', placeholder: 'Enter your e-mail address', labelText: 'E-mail' },
-  { type: 'text', name: 'linkedin', placeholder: 'linkedin.com/in/rafaelvecchisilva', labelText: 'LinkedIn profile' },
-  { type: 'tel', placeholder: 'Enter your phone number', labelText: 'Phone number' },
-  { type: 'text', name: 'location', placeholder: 'City, Country', labelText: 'Location' }
+  { type: 'text', name: 'fullname', id: 'fullname', placeholder: 'Enter first and last name', labelText: 'Full name' },
+  { type: 'email', id: 'email', placeholder: 'Enter your e-mail address', labelText: 'E-mail' },
+  { type: 'text', name: 'linkedin', id: 'linkedin', placeholder: 'linkedin.com/in/rafaelvecchisilva', labelText: 'LinkedIn profile' },
+  { type: 'tel', id: 'tel', placeholder: 'Enter your phone number', labelText: 'Phone number' },
+  { type: 'text', name: 'location', id: 'location', placeholder: 'City, Country', labelText: 'Location' }
 ];
 const education = [
   { type: 'text', name: 'institution', placeholder: "Enter the institution's name", labelText: 'Institution' },
@@ -23,9 +23,9 @@ const experience = [
 ];
 
 const formFields = {
-  personal : personal,
-  education : education,
-  experience : experience
-} 
+  personal: personal,
+  education: education,
+  experience: experience
+}
 
 export default formFields;

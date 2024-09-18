@@ -1,88 +1,74 @@
-Como está a hierarquia agora:
-APP
-    EDITOR
-        PERSONAL SECTION
-            SECTION BUTTON
-                PERSONAL INFO FORM
-                    INPUT COMPONENTS
-        EDUCATION SECTION 
-            SECTION BUTTON
-                ADD EDUCATION BUTTON
-                    EDUCATION FORM
-                        INPUT COMPONENTS    
-                        FORM BUTTONS
-        EXPERIENCE SECTION 
-            SECTION BUTTON
-                ADD EXPERIENCE BUTTON
-                    EXPERIENCE FORM
-                        INPUT COMPONENTS
-                        FORM BUTTONS
+DONE:
+    OK - FIX HIERARCHY
+        Como está a hierarquia agora:
+        APP
+            EDITOR
+                PERSONAL SECTION
+                    SECTION BUTTON
+                        PERSONAL INFO FORM
+                            INPUT COMPONENTS
+                EDUCATION SECTION 
+                    SECTION BUTTON
+                        ADD EDUCATION BUTTON
+                            EDUCATION FORM
+                                INPUT COMPONENTS    
+                                FORM BUTTONS
+                EXPERIENCE SECTION 
+                    SECTION BUTTON
+                        ADD EXPERIENCE BUTTON
+                            EXPERIENCE FORM
+                                INPUT COMPONENTS
+                                FORM BUTTONS
 
 
-Como deveria ser:
-app
-    editor
-        personal section
-            section button / header
-            form    
-                input components
-        education section
-            section button / header
-            entry cards
-            add entry
-            form    
-                input components
-                form buttons
-        experience section
-            section button / header
-            entry cards            
-            add entry
-            form    
-                input components
-                form buttons
-    result
-        // componentes que montam o currículo pronto na direita
+        Como deveria ser:
+        app
+            editor
+                personal section
+                    section button / header
+                    form    
+                        input components
+                education section
+                    section button / header
+                    entry cards
+                    add entry
+                    form    
+                        input components
+                        form buttons
+                experience section
+                    section button / header
+                    entry cards            
+                    add entry
+                    form    
+                        input components
+                        form buttons
+            result
+                // componentes que montam o currículo pronto na direita
 
+    OK - diferença: alguns tem ENTRY CARDS (+ add entry btn)
+        entao tem que ter uma prop pra diferenciar
+    o que o componente SECTION precisa pra renderizar entao??
+        OK - Nome da seção  
+            p/ 'buttonText' e o 'className' -> passa do editor pra seção
+        OK - handle toggle/collapse
+            função que toggle ao clicar no header -> vive no editor
+            estado pra saber se essa seção está ativa -> vive no editor  
+        OK - Saber se a seção tem 'entry cards'
+            OK - para renderizar condicional:
+                OK - add entry button
+                OK -entry cards
+    OK - funcionalidade do form (FORM GENERICO -> puxa inputs do formFields.js)
+    OK - falta clicar no ADD ENTRY e MOSTRAR O FORM
 
+    OK - Submit form -> salvar e criar cards
+    OK - Render entry cards    
+    OK - AO MOSTRAR O FORM, NÃOOOOOOOOOO mostrar os cards (usar o isEditing state)
 
-SECTIONS
+    OK - PERSONAL INFO: 
+        OK - keep values on form
+            posso:  
+                1. MANTER a seção só com o form "aberto", mas daí provavelmente preciso mudar no onChange? E ter um state pra ir salvando todos os campos do personal info
 
-OK - diferença: alguns tem ENTRY CARDS (+ add entry btn)
-    entao tem que ter uma prop pra diferenciar
+                2. ALTERAR a seção pra usar 1 único ENTRY CARD, mas daí sempre vai precisar SUBMIT. E antes disso, clicar no card para começar a editar. E tem que tirar o botão de DELETE tambem
 
-o que o componente SECTION precisa pra renderizar entao??
-    OK - Nome da seção  
-        p/ 'buttonText' e o 'className' -> passa do editor pra seção
-    OK - handle toggle/collapse
-        função que toggle ao clicar no header -> vive no editor
-        estado pra saber se essa seção está ativa -> vive no editor
-    
-    Saber se a seção tem 'entry cards'
-        para renderizar condicional:
-            OK - add entry button
-            entry cards <------------------------------------------ FALTA UMA FUNÇÃO PRA ISSO
-
-
-OK - funcionalidade do form (FORM GENERICO -> puxa inputs do formFields.js)
-OK - falta clicar no ADD ENTRY e MOSTRAR O FORM
-
-Submit form -> salvar e criar cards
-Render entry cards    
-AO MOSTRAR O FORM, NÃOOOOOOOOOO mostrar os cards (usar o isEditing state)
-
-
-
-
-personal section
-    section button / header
-    form    
-education section
-    section button / header
-    entry cards
-    add entry
-    form    
-experience section
-    section button / header
-    entry cards            
-    add entry
-    form
+            gosto mais da ideia de manter o form aberto

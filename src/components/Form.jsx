@@ -7,15 +7,19 @@ export default function Form({
   handleSubmit,
   handleCancel,
   entryToEdit = null,
+  onChange = null,
 }) {
   const fields = formFields[sectionName];
 
   const dataProp = entryToEdit
-    ? (field) => ({ ...field, data: entryToEdit[`${field.labelText}`] })
+    ? (field) => ({
+        ...field,
+        data: entryToEdit[`${hasSubmitButton ? field.labelText : field.id}`],
+      })
     : (field) => field;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} onChange={onChange ? onChange : undefined}>
       {fields.map((field, index) => (
         <InputComponent
           key={index}
