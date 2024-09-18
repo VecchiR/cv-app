@@ -73,17 +73,29 @@ export default function Section({
     for (let i = 0; i < e.target.length - 2; i++) {
       formData[e.target[i].labels[0].textContent] = e.target[i].value;
     }
-    formData['id'] = entryIdCounter.toString();
 
-    console.log('LOGS FOR DEBUGGING:');
-    console.log('formData: ', formData);
-    console.log('entries: ', entries);
-    console.log('[...entries, formData]: ', [...entries, formData]);
+    if (entryToEdit !== null) {
+      formData['id'] = entryToEdit.id;
+      const existingEntryIndex = entries.findIndex(entry => entry.id === entryToEdit.id);
+      const editedEntries = entries;
+      editedEntries[existingEntryIndex] = formData;
+      setEntries(editedEntries);
+      setEntryToEdit(null);
+      setIsEditing(false);
+    } else {
+      formData['id'] = entryIdCounter.toString();
+      setEntries([...entries, formData]);
+      setEntryIdCounter(entryIdCounter + 1);
+    }
 
-    setEntries([...entries, formData]);
-    setEntryIdCounter(entryIdCounter + 1);
+    // console.log('LOGS FOR DEBUGGING:');
+    // console.log('formData: ', formData);
+    // console.log('entries: ', entries);
+    // console.log('[...entries, formData]: ', [...entries, formData]);
+    
     setEntryToEdit(null);
     setIsEditing(false);
+
   };
 
   return (

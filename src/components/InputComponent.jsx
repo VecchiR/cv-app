@@ -16,8 +16,6 @@ export default function InputComponent({
     setValue(e.target.value);
   }
 
-  console.log('THIS IS DATA:', data);
-
   return type === 'textarea' ? (
     <div className="input-container">
       <label htmlFor={name}>

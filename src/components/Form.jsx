@@ -10,9 +10,12 @@ export default function Form({
 }) {
   const fields = formFields[sectionName];
 
-  if (entryToEdit !== null) {
-    return (
-      <form onSubmit={handleSubmit}>
+  const dataProp = entryToEdit
+    ? (field) => ({ ...field, data: entryToEdit[`${field.labelText}`] })
+    : (field) => field;
+
+  return (
+    <form onSubmit={handleSubmit}>
       {fields.map((field, index) => (
         <InputComponent
           key={index}
@@ -20,7 +23,7 @@ export default function Form({
           name={field.name || field.type} // Fallback to 'type' if name is not provided
           placeholder={field.placeholder}
           labelText={field.labelText}
-          data={entryToEdit[`${field.labelText}`]}
+          {...dataProp(field)} // Dynamically apply data prop based on entryToEdit
         />
       ))}
       {hasSubmitButton && (
@@ -32,30 +35,5 @@ export default function Form({
         </>
       )}
     </form>
-    );
-
-  } 
-  else {
-    return (
-      <form onSubmit={handleSubmit}>
-        {fields.map((field, index) => (
-          <InputComponent
-            key={index}
-            type={field.type}
-            name={field.name || field.type} // Fallback to 'type' if name is not provided
-            placeholder={field.placeholder}
-            labelText={field.labelText}
-          />
-        ))}
-        {hasSubmitButton && (
-          <>
-            <button type="submit">Submit</button>
-            <button type="button" onClick={handleCancel}>
-              Cancel
-            </button>
-          </>
-        )}
-      </form>
-    );
-  }
+  );
 }
