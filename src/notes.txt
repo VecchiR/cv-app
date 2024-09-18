@@ -72,3 +72,11 @@ DONE:
                 2. ALTERAR a seção pra usar 1 único ENTRY CARD, mas daí sempre vai precisar SUBMIT. E antes disso, clicar no card para começar a editar. E tem que tirar o botão de DELETE tambem
 
             gosto mais da ideia de manter o form aberto
+
+
+
+A nível APP:
+    OK - Clear: resetar todos os [entries]
+    - FILL EX.: alimentar um [entries] pré-pronto
+        OK - personal info recebe o objeto preenchido
+        - cada section tem que receber um [entries]

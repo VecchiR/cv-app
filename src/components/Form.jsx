@@ -8,6 +8,8 @@ export default function Form({
   handleCancel,
   entryToEdit = null,
   onChange = null,
+  toClear,
+  toFillEx
 }) {
   const fields = formFields[sectionName];
 

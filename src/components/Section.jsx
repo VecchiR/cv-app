@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SectionHeaderButton from './SectionHeaderButton';
 import Form from './Form';
 import AddEntryButton from './AddEntryButton';
 import EntryCard from './EntryCard';
-import { isElementOfType } from 'react-dom/test-utils';
+import example from '../examples';
 
 export default function Section({
   sectionName,
@@ -11,6 +11,8 @@ export default function Section({
   isActive,
   hasEntryCards,
   handleHeaderClick,
+  toClear,
+  toFillEx,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [entries, setEntries] = useState(
@@ -27,12 +29,41 @@ export default function Section({
   const [entryIdCounter, setEntryIdCounter] = useState(1);
   const [entryToEdit, setEntryToEdit] = useState(null);
 
+   // Effect to handle clearing the entries when toClear is true
+  useEffect(() => {
+    if (toClear) {
+      setEntries(
+        hasEntryCards
+          ? [] // Resetting to empty array for sections with entry cards
+          : {
+              // Resetting to empty fields for personal info section
+              fullname: '',
+              email: '',
+              linkedin: '',
+              tel: '',
+              location: '',
+            }
+      );
+    }
+  }, [toClear, hasEntryCards]);
+
+  // Effect to handle filling example data when toFillEx is true
+  useEffect(() => {
+    if (toFillEx) {
+      setEntries(
+        hasEntryCards
+          ? example[`${sectionName}`] // (Optional: You can add example entries for sections with cards)
+          : example.personal
+      );
+    }
+  }, [toFillEx, hasEntryCards]);
+
+
   const handleSoloEntryFormChange = (e) => {
     const updated = entries;
     updated[`${e.target.id}`] = e.target.value;
     setEntries(updated);
-  }
-
+  };
 
   const handleAddNewEntry = () => {
     setIsEditing(true);
@@ -133,13 +164,15 @@ export default function Section({
           handleCancel={handleCancel}
           entryToEdit={hasEntryCards ? entryToEdit : entries}
           onChange={hasEntryCards ? null : handleSoloEntryFormChange}
+          toClear={toClear}
+          toFillEx={toFillEx}
         />
       )}
 
       {/* Se ATIVO e TEM entry cards e NÃO ESTA EDITANDO -> mostra ENTRY CARDS se houver e ADD ENTRY BUTTON  */}
       {isActive && hasEntryCards && !isEditing && (
         <>
-          {entries.map((entry, index) => (
+          {entries.map((entry) => (
             <EntryCard
               key={entry.id}
               entry={entry}

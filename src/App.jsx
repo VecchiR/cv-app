@@ -7,12 +7,29 @@ import ExperienceSection from './components/Experience section/ExperienceSection
 import Editor from './components/Editor.jsx';
 import Section from './components/Section.jsx';
 import CVButtons from './components/CVButtons.jsx';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [toClear, setToClear] = useState(false);
+  const [toFillEx, setToFillEx] = useState(false);
+
+
+  // Reset toClear and toFillEx after the sections are notified
+  useEffect(() => {
+    if (toClear) setToClear(false);
+    if (toFillEx) setToFillEx(false);
+  }, [toClear, toFillEx]);
+
   return (
     <>
-      <CVButtons />
-      <Editor />
+      <CVButtons
+        setToClear={setToClear}
+        setToFillEx={setToFillEx}
+      />
+      <Editor
+        toClear={toClear}
+        toFillEx={toFillEx}
+      />
     </>
   );
 }
