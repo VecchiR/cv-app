@@ -7,6 +7,7 @@ import ExperienceSection from './components/Experience section/ExperienceSection
 import Editor from './components/Editor.jsx';
 import Section from './components/Section.jsx';
 import CVButtons from './components/CVButtons.jsx';
+import CVPreview from './components/CVPreview.jsx';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         toClear={toClear}
         toFillEx={toFillEx}
       />
+      <CVPreview/>
     </>
   );
 }

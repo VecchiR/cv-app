@@ -75,8 +75,12 @@ DONE:
 
 
 
-A nível APP:
-    OK - Clear: resetar todos os [entries]
-    - FILL EX.: alimentar um [entries] pré-pronto
-        OK - personal info recebe o objeto preenchido
-        - cada section tem que receber um [entries]
+    A nível APP:
+        OK - Clear: resetar todos os [entries]
+        OK - FILL EX.: alimentar um [entries] pré-pronto
+            OK - personal info recebe o objeto preenchido
+            OK - cada section tem que receber um [entries]
+
+
+agora:
+    - conseguir acessar o [entries] da seção certa dentro do CVPreview pra gerar os CVEntry
