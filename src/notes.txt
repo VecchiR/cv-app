@@ -81,6 +81,9 @@ DONE:
             OK - personal info recebe o objeto preenchido
             OK - cada section tem que receber um [entries]
 
+BUG: SE CLICA FILL -> DELETA OS ENTRIES DA SEÇÃO -> CLICA EM FILL DE NOVO.... NAO ATUALIZA O ENTRIES PÔS
+    OK - nao re-fill qualquer entry que foi deletado!
+    MAS AGORA: se eu edito um entry que era do fill ex, quando dou fill ex, ele volta editado
 
 agora:
     OK - conseguir acessar o [entries] da seção certa dentro do CVPreview 

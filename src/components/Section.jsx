@@ -68,16 +68,16 @@ export default function Section({
           ? example[`${sectionName}`] // (Optional: You can add example entries for sections with cards)
           : example.personal
       );
-      setAllEntries(example);
+      setAllEntries({...example});
     }
   }, [toFillEx, hasEntryCards]);
 
   const handleSoloEntryFormChange = (e) => {
-    const updated = entries;
+    const updated = {...entries};
     updated[`${e.target.id}`] = e.target.value;
     setEntries(updated);
 
-    const allUpdated = allEntries;
+    const allUpdated = {...allEntries};
     allUpdated[sectionName] = updated;
     setAllEntries(allUpdated);
   };
@@ -128,12 +128,12 @@ export default function Section({
       );
 
       if (matchingEntryIndex !== -1) {
-        const updated = entries
+        const updated = [...entries]
           .slice(0, matchingEntryIndex)
           .concat(entries.slice(matchingEntryIndex + 1));
         setEntries(updated);
 
-        const allUpdated = allEntries;
+        const allUpdated = {...allEntries};
         allUpdated[sectionName] = updated;
         setAllEntries(allUpdated);
 
@@ -155,7 +155,7 @@ export default function Section({
       formData[e.target[i].labels[0].textContent] = e.target[i].value;
     }
     
-    const updatedEntries = entries;
+    let updatedEntries = [...entries];
 
     if (entryToEdit !== null) {
       formData["id"] = entryToEdit.id;
@@ -173,7 +173,7 @@ export default function Section({
       setEntryIdCounter(entryIdCounter + 1);
     }
 
-    const allUpdated = allEntries;
+    const allUpdated = {...allEntries};
     allUpdated[sectionName] = updatedEntries;
     setAllEntries(allUpdated);
 
