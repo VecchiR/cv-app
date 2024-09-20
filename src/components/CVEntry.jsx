@@ -10,7 +10,7 @@ export default function CVEntry({institution,
   description,
   entryId,}) {
   return (
-    <div className="entry-container">
+    <div className="entry-container" key={entryId}>
         <div className="left-side">
             <p><span>{startDate}</span> - <span>{endDate}</span></p>
             <p>{location}</p>
