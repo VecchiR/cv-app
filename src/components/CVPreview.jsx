@@ -1,7 +1,9 @@
 import '../styles/index.css';
 import CVEntry from './CVEntry';
+import { useState, useEffect } from 'react';
 
-export default function CVPreview() {
+
+export default function CVPreview({allEntries, setAllEntries}) {
     return (
         <div className="preview-container">
             <div className='personal-section'>

@@ -5,7 +5,7 @@ import ExperienceSection from './Experience section/ExperienceSection';
 import PersonalSection from './Personal section/PersonalSection';
 import Section from './Section';
 
-export default function Editor({toClear, toFillEx}) {
+export default function Editor({ toClear, toFillEx, allEntries, setAllEntries }) {
   const [activeSection, setActiveSection] = useState(null);
 
   const handleHeaderClick = (sectionName) => {
@@ -35,6 +35,8 @@ export default function Editor({toClear, toFillEx}) {
         handleHeaderClick={handleHeaderClick}
         toClear={toClear}
         toFillEx={toFillEx}
+        allEntries={allEntries}
+        setAllEntries={setAllEntries}
       />
       <Section
         sectionName={'education'}
@@ -44,6 +46,8 @@ export default function Editor({toClear, toFillEx}) {
         handleHeaderClick={handleHeaderClick}
         toClear={toClear}
         toFillEx={toFillEx}
+        allEntries={allEntries}
+        setAllEntries={setAllEntries}
 
       />
       <Section
@@ -54,6 +58,8 @@ export default function Editor({toClear, toFillEx}) {
         handleHeaderClick={handleHeaderClick}
         toClear={toClear}
         toFillEx={toFillEx}
+        allEntries={allEntries}
+        setAllEntries={setAllEntries}
 
       />
     </div>

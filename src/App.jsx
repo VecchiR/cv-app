@@ -14,6 +14,12 @@ function App() {
   const [toClear, setToClear] = useState(false);
   const [toFillEx, setToFillEx] = useState(false);
 
+  const [allEntries, setAllEntries] = useState({
+    personal : {},
+    education : [],
+    experience : []
+  });
+
 
   // Reset toClear and toFillEx after the sections are notified
   useEffect(() => {
@@ -30,8 +36,13 @@ function App() {
       <Editor
         toClear={toClear}
         toFillEx={toFillEx}
+        allEntries={allEntries}
+        setAllEntries={setAllEntries}
       />
-      <CVPreview/>
+      <CVPreview
+        allEntries={allEntries}
+        setAllEntries={setAllEntries}
+      />
     </>
   );
 }

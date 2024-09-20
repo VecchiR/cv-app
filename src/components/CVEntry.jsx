@@ -1,4 +1,6 @@
 import '../styles/index.css';
+import { useState, useEffect } from 'react';
+
 
 export default function CVEntry() {
   return (

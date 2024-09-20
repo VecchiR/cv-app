@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import SectionHeaderButton from './SectionHeaderButton';
-import Form from './Form';
-import AddEntryButton from './AddEntryButton';
-import EntryCard from './EntryCard';
-import example from '../examples';
+import { useState, useEffect } from "react";
+import SectionHeaderButton from "./SectionHeaderButton";
+import Form from "./Form";
+import AddEntryButton from "./AddEntryButton";
+import EntryCard from "./EntryCard";
+import example from "../examples";
 
 export default function Section({
   sectionName,
@@ -13,23 +13,25 @@ export default function Section({
   handleHeaderClick,
   toClear,
   toFillEx,
+  allEntries,
+  setAllEntries,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const [entries, setEntries] = useState(
     hasEntryCards
       ? []
       : {
-          fullname: '',
-          email: '',
-          linkedin: '',
-          tel: '',
-          location: '',
+          fullname: "",
+          email: "",
+          linkedin: "",
+          tel: "",
+          location: "",
         }
   );
   const [entryIdCounter, setEntryIdCounter] = useState(1);
   const [entryToEdit, setEntryToEdit] = useState(null);
 
-   // Effect to handle clearing the entries when toClear is true
+  // Effect to handle clearing the entries when toClear is true
   useEffect(() => {
     if (toClear) {
       setEntries(
@@ -37,13 +39,24 @@ export default function Section({
           ? [] // Resetting to empty array for sections with entry cards
           : {
               // Resetting to empty fields for personal info section
-              fullname: '',
-              email: '',
-              linkedin: '',
-              tel: '',
-              location: '',
+              fullname: "",
+              email: "",
+              linkedin: "",
+              tel: "",
+              location: "",
             }
       );
+      setAllEntries({
+        personal: {
+          fullname: "",
+          email: "",
+          linkedin: "",
+          tel: "",
+          location: "",
+        },
+        education: [],
+        experience: [],
+      });
     }
   }, [toClear, hasEntryCards]);
 
@@ -55,14 +68,18 @@ export default function Section({
           ? example[`${sectionName}`] // (Optional: You can add example entries for sections with cards)
           : example.personal
       );
+      setAllEntries(example);
     }
   }, [toFillEx, hasEntryCards]);
-
 
   const handleSoloEntryFormChange = (e) => {
     const updated = entries;
     updated[`${e.target.id}`] = e.target.value;
     setEntries(updated);
+
+    const allUpdated = allEntries;
+    allUpdated[sectionName] = updated;
+    setAllEntries(allUpdated);
   };
 
   const handleAddNewEntry = () => {
@@ -70,20 +87,24 @@ export default function Section({
   };
 
   const handleEditEntry = (e) => {
-    if (!e.target.matches('button')) {
+    if (!e.target.matches("button")) {
       console.log(
         entries.filter(
-          (x) => x.id === e.target.parentElement.parentElement.getAttribute('entryid')
+          (x) =>
+            x.id ===
+            e.target.parentElement.parentElement.getAttribute("entryid")
         )[0]
       );
 
-      const entryId = e.currentTarget.getAttribute('entryid');
-      const matchingEntryIndex = entries.findIndex((entry) => entry.id === entryId);
+      const entryId = e.currentTarget.getAttribute("entryid");
+      const matchingEntryIndex = entries.findIndex(
+        (entry) => entry.id === entryId
+      );
 
       if (matchingEntryIndex !== -1) {
         setEntryToEdit(entries[matchingEntryIndex]);
       } else {
-        console.warn('No entry found with matching ID:', entryId);
+        console.warn("No entry found with matching ID:", entryId);
       }
 
       setIsEditing(true);
@@ -91,22 +112,33 @@ export default function Section({
   };
 
   const handleDeleteEntry = (e) => {
-    if (e.target.className === 'delete-button') {
+    if (e.target.className === "delete-button") {
       console.log(
         entries.filter(
-          (x) => x.id === e.target.parentElement.parentElement.getAttribute('entryid')
+          (x) =>
+            x.id ===
+            e.target.parentElement.parentElement.getAttribute("entryid")
         )[0]
       );
 
-      const entryId = e.target.parentElement.parentElement.getAttribute('entryid');
-      const matchingEntryIndex = entries.findIndex((entry) => entry.id === entryId);
+      const entryId =
+        e.target.parentElement.parentElement.getAttribute("entryid");
+      const matchingEntryIndex = entries.findIndex(
+        (entry) => entry.id === entryId
+      );
 
       if (matchingEntryIndex !== -1) {
-        setEntries(
-          entries.slice(0, matchingEntryIndex).concat(entries.slice(matchingEntryIndex + 1))
-        );
+        const updated = entries
+          .slice(0, matchingEntryIndex)
+          .concat(entries.slice(matchingEntryIndex + 1));
+        setEntries(updated);
+
+        const allUpdated = allEntries;
+        allUpdated[sectionName] = updated;
+        setAllEntries(allUpdated);
+
       } else {
-        console.warn('No entry found with matching ID:', entryId);
+        console.warn("No entry found with matching ID:", entryId);
       }
     }
   };
@@ -122,20 +154,28 @@ export default function Section({
     for (let i = 0; i < e.target.length - 2; i++) {
       formData[e.target[i].labels[0].textContent] = e.target[i].value;
     }
+    
+    const updatedEntries = entries;
 
     if (entryToEdit !== null) {
-      formData['id'] = entryToEdit.id;
-      const existingEntryIndex = entries.findIndex((entry) => entry.id === entryToEdit.id);
-      const editedEntries = entries;
-      editedEntries[existingEntryIndex] = formData;
-      setEntries(editedEntries);
+      formData["id"] = entryToEdit.id;
+      const existingEntryIndex = entries.findIndex(
+        (entry) => entry.id === entryToEdit.id
+      );
+      updatedEntries[existingEntryIndex] = formData;
+      setEntries(updatedEntries);
       setEntryToEdit(null);
       setIsEditing(false);
     } else {
-      formData['id'] = entryIdCounter.toString();
-      setEntries([...entries, formData]);
+      formData["id"] = entryIdCounter.toString();
+      updatedEntries = [...entries, formData];
+      setEntries(updatedEntries);
       setEntryIdCounter(entryIdCounter + 1);
     }
+
+    const allUpdated = allEntries;
+    allUpdated[sectionName] = updatedEntries;
+    setAllEntries(allUpdated);
 
     // console.log('LOGS FOR DEBUGGING:');
     // console.log('formData: ', formData);

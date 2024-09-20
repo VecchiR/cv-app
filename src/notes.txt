@@ -83,4 +83,5 @@ DONE:
 
 
 agora:
-    - conseguir acessar o [entries] da seção certa dentro do CVPreview pra gerar os CVEntry
+    OK - conseguir acessar o [entries] da seção certa dentro do CVPreview 
+    - pra gerar os CVEntry
