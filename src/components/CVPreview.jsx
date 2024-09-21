@@ -6,7 +6,6 @@ export default function CVPreview({ allEntries, setAllEntries }) {
   return (
     <div className="preview-container">
       <div className="personal-section">
-        PERSONAL SECTION
         <h1>{allEntries.personal.fullname}</h1>
         <div>
           <p>{allEntries.personal.email}</p>
@@ -16,7 +15,6 @@ export default function CVPreview({ allEntries, setAllEntries }) {
         </div>
       </div>
       <div className="education-section">
-        EDUCATION SECTION
         {allEntries.education.map((entryObj) => (
           <>
             <h2>EDUCATION</h2>
@@ -32,7 +30,6 @@ export default function CVPreview({ allEntries, setAllEntries }) {
         ))}
       </div>
       <div className="experience-section">
-        WORK EXPERIENCE SECTION
         {allEntries.experience.map((entryObj) => (
           <>
             <h2>EXPERIENCE</h2>

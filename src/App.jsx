@@ -29,16 +29,18 @@ function App() {
 
   return (
     <>
-      <CVButtons
-        setToClear={setToClear}
-        setToFillEx={setToFillEx}
-      />
-      <Editor
-        toClear={toClear}
-        toFillEx={toFillEx}
-        allEntries={allEntries}
-        setAllEntries={setAllEntries}
-      />
+      <div className="right-side">
+        <CVButtons
+          setToClear={setToClear}
+          setToFillEx={setToFillEx}
+        />
+        <Editor
+          toClear={toClear}
+          toFillEx={toFillEx}
+          allEntries={allEntries}
+          setAllEntries={setAllEntries}
+        />
+      </div>
       <CVPreview
         allEntries={allEntries}
         setAllEntries={setAllEntries}
