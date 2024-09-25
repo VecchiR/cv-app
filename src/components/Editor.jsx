@@ -4,6 +4,8 @@ import EducationSection from './Education section/EducationSection';
 import ExperienceSection from './Experience section/ExperienceSection';
 import PersonalSection from './Personal section/PersonalSection';
 import Section from './Section';
+import '../styles/Editor.css';
+
 
 export default function Editor({ toClear, toFillEx, allEntries, setAllEntries }) {
   const [activeSection, setActiveSection] = useState(null);

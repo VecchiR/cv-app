@@ -1,0 +1,71 @@
+.main-right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-buttons-container {
+    display: flex;
+    gap: 10px;
+}
+
+.side-buttons-container button {
+    padding: 14px 22px;
+}
+
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.entry-card,
+.section form {
+    background-color: rgb(230, 228, 228);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.entry-card {
+    padding: 18px 30px;
+    margin: 10px 0 0;
+    align-items: flex-start;
+}
+
+.section form {
+    margin-bottom: 10px;
+    align-items: stretch;
+}
+
+.section-bottom {
+    background-color: rgb(196, 196, 196);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 8px 12px;
+}
+
+.section > button {
+    padding: 22px;
+    text-align: left;
+}
+
+.entry-card:last-of-type {
+    margin-bottom: 10px;
+}
+
+.entry-card-actions {
+    margin-top: 16px; 
+    align-self: center;
+}
+
+.add-entry-button {
+    align-self: center;
+}
+
+
+.section.active > button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}

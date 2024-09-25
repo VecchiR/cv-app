@@ -85,6 +85,12 @@ DONE:
         OK - nao re-fill qualquer entry que foi deletado!
         OK - MAS AGORA: se eu edito um entry que era do fill ex, quando dou fill ex, ele volta editado
 
-agora:
     OK - conseguir acessar o [entries] da seção certa dentro do CVPreview 
-    - pra gerar os CVEntry
+    OK - pra gerar os CVEntry dentro do CVPreview
+
+agora:
+    - Editar o css
+
+    - como faz pra eu "imprimir" ou gerar um .pdf só de um div específico?
+    
+    - e como eu sei o tamanho das coisas, a escala em relação a uma folha A4? Como faço pra esse preview ser fiel ao pdf e vice-versa?

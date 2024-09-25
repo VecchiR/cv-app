@@ -4,6 +4,7 @@ import Form from "./Form";
 import AddEntryButton from "./AddEntryButton";
 import EntryCard from "./EntryCard";
 import example from "../examples";
+import '../styles/Editor.css';
 
 export default function Section({
   sectionName,
@@ -187,7 +188,7 @@ export default function Section({
   };
 
   return (
-    <div className={`section ${sectionName}-section`}>
+    <div className={`section ${sectionName}-section ${isActive? `active` : ''}`}>
       <SectionHeaderButton
         sectionName={sectionName}
         handleHeaderClick={handleHeaderClick}
@@ -197,32 +198,36 @@ export default function Section({
       {/* Se ATIVO e NÃO tem entry cards -> mostra o form logo de cara */}
       {/* Se ATIVO e TEM entry cards e ESTÁ EDITANDO -> mostra só o FORM  */}
       {isActive && (!hasEntryCards || (hasEntryCards && isEditing)) && (
-        <Form
-          sectionName={sectionName}
-          hasSubmitButton={hasEntryCards}
-          handleSubmit={handleSubmitForm}
-          handleCancel={handleCancel}
-          entryToEdit={hasEntryCards ? entryToEdit : entries}
-          onChange={hasEntryCards ? null : handleSoloEntryFormChange}
-          toClear={toClear}
-          toFillEx={toFillEx}
-        />
+        <div className="section-bottom">
+          <Form
+            sectionName={sectionName}
+            hasSubmitButton={hasEntryCards}
+            handleSubmit={handleSubmitForm}
+            handleCancel={handleCancel}
+            entryToEdit={hasEntryCards ? entryToEdit : entries}
+            onChange={hasEntryCards ? null : handleSoloEntryFormChange}
+            toClear={toClear}
+            toFillEx={toFillEx}
+          />
+        </div>
       )}
 
       {/* Se ATIVO e TEM entry cards e NÃO ESTA EDITANDO -> mostra ENTRY CARDS se houver e ADD ENTRY BUTTON  */}
       {isActive && hasEntryCards && !isEditing && (
-        <>
-          {entries.map((entry) => (
-            <EntryCard
-              key={entry.id}
-              entry={entry}
-              handleClick={handleEditEntry}
-              handleDelete={handleDeleteEntry}
-              entryid={entry.id}
-            />
-          ))}
-          <AddEntryButton handleClick={handleAddNewEntry} />
-        </>
+        
+          <div className="section-bottom">
+            {entries.map((entry) => (
+              <EntryCard
+                key={entry.id}
+                entry={entry}
+                handleClick={handleEditEntry}
+                handleDelete={handleDeleteEntry}
+                entryid={entry.id}
+              />
+            ))}
+            <AddEntryButton handleClick={handleAddNewEntry} />
+          </div>
+        
       )}
     </div>
   );

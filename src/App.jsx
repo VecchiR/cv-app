@@ -9,6 +9,8 @@ import Section from './components/Section.jsx';
 import CVButtons from './components/CVButtons.jsx';
 import CVPreview from './components/CVPreview.jsx';
 import { useState, useEffect } from 'react';
+import './styles/Editor.css';
+
 
 function App() {
   const [toClear, setToClear] = useState(false);
@@ -29,7 +31,7 @@ function App() {
 
   return (
     <>
-      <div className="right-side">
+      <div className="main-right-side">
         <CVButtons
           setToClear={setToClear}
           setToFillEx={setToFillEx}
