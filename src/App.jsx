@@ -1,15 +1,8 @@
-import './styles/App.css';
-import './styles/forms.css';
-import './styles/sections.css';
-import PersonalSection from './components/Personal section/PersonalSection.jsx';
-import EducationSection from './components/Education section/EducationSection.jsx';
-import ExperienceSection from './components/Experience section/ExperienceSection.jsx';
+import './styles/styleBundle.js';
 import Editor from './components/Editor.jsx';
-import Section from './components/Section.jsx';
 import CVButtons from './components/CVButtons.jsx';
 import CVPreview from './components/CVPreview.jsx';
 import { useState, useEffect } from 'react';
-import './styles/Editor.css';
 
 
 function App() {
@@ -31,7 +24,7 @@ function App() {
 
   return (
     <>
-      <div className="main-right-side">
+      <div className="main-left-side">
         <CVButtons
           setToClear={setToClear}
           setToFillEx={setToFillEx}

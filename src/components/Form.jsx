@@ -1,6 +1,5 @@
 import formFields from '../formFields';
 import InputComponent from './InputComponent';
-import '../styles/Editor.css';
 
 
 export default function Form({

@@ -1,5 +1,4 @@
-import '../styles/index.css';
-import '../styles/Editor.css';
+
 
 export default function EntryCard({ entry, handleClick, handleDelete, entryid }) {
   return (

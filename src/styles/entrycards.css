@@ -1,0 +1,37 @@
+.entry-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 0px;
+    margin: 10px 0 0;
+    align-items: flex-start;
+    padding: 20px 12px;
+
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-radius: 0;
+}
+
+.entry-card:first-of-type {
+    border-top-width: 2px;
+    border-top-style: solid;
+}
+
+
+.entry-card:last-of-type {
+    margin-bottom: 10px;
+}
+
+.entry-card:first-of-type {
+    margin-top: 0;
+}
+
+.entry-card-actions {
+    margin-top: 16px; 
+    align-self: center;
+}
+
+.delete-button {
+    padding: 6px 18px;
+    border-radius: calc(var(--general-border-radius)* 0.5);
+}

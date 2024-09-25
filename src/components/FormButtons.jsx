@@ -1,6 +1,4 @@
-import '../styles/forms.css';
-import '../styles/index.css';
-import '../styles/Editor.css';
+
 
 
 export default function FormButtons() {

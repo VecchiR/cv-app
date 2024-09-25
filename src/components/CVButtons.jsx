@@ -1,5 +1,3 @@
-import '../styles/index.css';
-import '../styles/CVButtons.css';
 
 export default function CVButtons({setToClear, setToFillEx}) {
   return (

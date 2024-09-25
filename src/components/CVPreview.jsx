@@ -1,4 +1,3 @@
-import "../styles/index.css";
 import CVEntry from "./CVEntry";
 import { useState, useEffect } from "react";
 

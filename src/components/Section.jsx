@@ -4,7 +4,6 @@ import Form from "./Form";
 import AddEntryButton from "./AddEntryButton";
 import EntryCard from "./EntryCard";
 import example from "../examples";
-import '../styles/Editor.css';
 
 export default function Section({
   sectionName,
