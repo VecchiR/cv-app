@@ -107,6 +107,31 @@ form button:first-of-type {
   background-color: var(--accent);
 }
 
+.preview-container>.personal-section {
+  background-color: var(--primary);
+}
+
+.preview-container>.personal-section h1,
+.preview-container>.personal-section p {
+color: var(--element-background);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 body {
@@ -135,12 +160,12 @@ h1 {
 }
 
 h2 {
-  font-size: 3.158rem;
+  font-size: 1.8rem;
   /* 50.56px */
 }
 
 h3 {
-  font-size: 2.369rem;
+  font-size: 1.1rem;
   /* 37.92px */
 }
 
@@ -181,4 +206,10 @@ input, textarea {
 .delete-button {
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+.entry-container .right-side,
+.entry-container .left-side
+{
+    font-size: 1.1rem;
 }

@@ -5,6 +5,8 @@ import CVPreview from './components/CVPreview.jsx';
 import { useState, useEffect } from 'react';
 
 
+
+
 function App() {
   const [toClear, setToClear] = useState(false);
   const [toFillEx, setToFillEx] = useState(false);

@@ -14,9 +14,9 @@ export default function CVPreview({ allEntries, setAllEntries }) {
         </div>
       </div>
       <div className="education-section">
+        <h2>EDUCATION</h2>
         {allEntries.education.map((entryObj) => (
           <>
-            <h2>EDUCATION</h2>
             <CVEntry
               institution={entryObj["Institution"]}
               title={entryObj["Degree"]}
@@ -29,9 +29,9 @@ export default function CVPreview({ allEntries, setAllEntries }) {
         ))}
       </div>
       <div className="experience-section">
+        <h2>EXPERIENCE</h2>
         {allEntries.experience.map((entryObj) => (
           <>
-            <h2>EXPERIENCE</h2>
             <CVEntry
                institution={entryObj["Company name"]}
                title={entryObj["Position Title"]}

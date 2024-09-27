@@ -1,10 +1,10 @@
 const personal =
 {
-    fullname: 'John Johnn',
-    email: 'jonjonjon@jon.com',
-    linkedin: 'jonjohnn',
+    fullname: 'Alexandre Silva',
+    email: 'xandao@gmail.com',
+    linkedin: '@xandy',
     tel: '(+55) 55 5555-5555',
-    location: 'Carapicuíba, BR',
+    location: 'Campinas, BR',
 }
     ;
 
